@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusTube</title>
+</head>
+
+<style>/* Add some basic styles */
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    iframe {width: 560px;
+        height: 315px;
+        border: none;
+        margin-top: 20px;
+  ;
+    }
+    select, button {
+        padding: 10px;
+        font-size: 16px;
+        margin: 5px;
+    }
+      
+        </style>
+
+
+
+
+
+</body>
+</html>
+
+<body>
+    <h1>FocusTube</h1>
+    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-app-white-icon.png" alt="" width="20" height="20"/>
+
+    <!-- Dropdown to select a video -->
+    <form>
+        <label for="videos">Choose a video:</label>
+        <select id="videos">
+            <option value="">--Select a Video--</option>
+            <option value="NAmc74KK7JI">يسلم المرءَ أخوه</option>
+            <option value="zuJxjPK2TgU">القصيـدة الرباعيـة في الوعـظ والسنـة</option>
+            <option value="oWzo-SsqOVY">لامية ابن الوردي</option>
+            <option value="_qXLo4wTk9E">نظم مثلث قطرب للبهنسي</option>
+            <option value="9XscxBi-M40">ما للمنية أدعوها وتبتعد</option>
+        </select>
+    </form>
+
+    <!-- YouTube iframe for video embedding -->
+    <div id="player"></div>
+
+    <!-- Section for displaying poem descriptions -->
+    <h3>Poem Description</h3>
+    <p id="poemDescription">Please select a video to see its description.</p>
+
+    <!-- Buttons for controlling video -->
+    <br>
+    <button id="prevButton">Previous Video</button>
+    <button id="nextButton">Next Video</button>
+
+    <hr>
+
+    <!-- Load the IFrame Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+<footer>
+        &copy; 2024 FocusTube | All Rights Reserved
+    </footer>
+</html>
+<script>// Define the YouTube video IDs and descriptions
+    const videos = {
+        'NAmc74KK7JI': {
+            title: 'يسلم المرءَ أخوه',
+            description: 'قصيدة تتحدث عن الأخوة وقيمتها في العلاقات الإنسانية.'
+        },
+        'zuJxjPK2TgU': {
+            title: 'القصيـدة الرباعيـة في الوعـظ والسنـة',
+            description: 'قصيدة تتناول موضوعات الوعظ والتوجيه الديني وفق السنة النبوية.'
+        },
+        'oWzo-SsqOVY': {
+            title: 'لامية ابن الوردي',
+            description: 'قصيدة مشهورة لابن الوردي تتناول مواضيع الأخلاق والمواعظ.'
+        },
+        '_qXLo4wTk9E': {
+            title: 'نظم مثلث قطرب للبهنسي',
+            description: 'نظم شعري يتناول مثلثات قطرب، وهو نوع من الأشعار التعليمية.'
+        },
+        '9XscxBi-M40': {
+            title: 'ما للمنية أدعوها وتبتعد',
+            description: 'قصيدة تعبر عن التأمل في الموت والمنية وكيف تبتعد عن الإنسان.'
+        }
+    };
+    
+    // Variables to track the current player and video
+    let player;
+    let currentVideoIndex = 0;
+    const videoIDs = Object.keys(videos);
+    
+    // Load the YouTube IFrame API and create the player
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '315',
+            width: '560',
+            videoId: videoIDs[currentVideoIndex],
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+    
+    // Event handler when player is ready
+    function onPlayerReady(event) {
+        const videoSelect = document.getElementById('videos');
+        const poemDescription = document.getElementById('poemDescription');
+        
+        // Populate dropdown with video titles
+        videoSelect.innerHTML = '<option value="">--Select a Video--</option>';
+        videoIDs.forEach(videoId => {
+            videoSelect.innerHTML += `<option value="${videoId}">${videos[videoId].title}</option>`;
+        });
+    
+        // When a new video is selected
+        videoSelect.addEventListener('change', function () {
+            const selectedValue = videoSelect.value;
+            if (videos[selectedValue]) {
+                player.loadVideoById(selectedValue);
+                currentVideoIndex = videoIDs.indexOf(selectedValue);
+                // Update poem description
+                poemDescription.textContent = videos[selectedValue].description;
+            }
+        });
+    
+        // Previous and next video controls
+        document.getElementById('prevButton').addEventListener('click', function () {
+            if (currentVideoIndex > 0) {
+                currentVideoIndex--;
+                const previousVideoId = videoIDs[currentVideoIndex];
+                player.loadVideoById(previousVideoId);
+                videoSelect.value = previousVideoId;
+                // Update poem description
+                poemDescription.textContent = videos[previousVideoId].description;
+            }
+        });
+    
+        document.getElementById('nextButton').addEventListener('click', function () {
+            if (currentVideoIndex < videoIDs.length - 1) {
+                currentVideoIndex++;
+                const nextVideoId = videoIDs[currentVideoIndex];
+                player.loadVideoById(nextVideoId);
+                videoSelect.value = nextVideoId;
+                // Update poem description
+                poemDescription.textContent = videos[nextVideoId].description;
+            }
+        });
+    }
+    </script>
