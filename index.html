@@ -4,91 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FocusTube</title>
-    <style>
-        /* Add basic styles */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-gap: 20px;
-            padding: 20px;
-        }
-        iframe {
-            width: 560px;
-            height: 315px;
-            border: none;
-            margin-top: 20px;
-        }
-        select, button {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px;
-        }
-        .main-video {
-            grid-column: 1 / -1;
-        }
-        .video-selection {
-            grid-column: 1 / -1;
-            text-align: left;
-        }
-        /* Styling for video list (squares) */
-        .video-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .video-item {
-            cursor: pointer;
-            width: 100px;
-            height: 100px;
-            background-color: #f1f1f1;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s, background-image 0.3s;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .video-item:hover {
-            background-color: #e0e0e0;
-        }
-        /* Hover effect to show thumbnail */
-        .video-item:hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        .video-item:hover {
-            background-image: url('');
-            background-color: transparent;
-        }
-        .video-item-title {
-            font-size: 12px;
-            color: #000;
-            z-index: 2;
-            text-align: center;
-            width: 100%;
-        }
-        .video-item:hover .video-item-title {
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>FocusTube</h1>
-    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-app-white-icon.png" alt="YouTube Icon" width="20" height="20" />
+
+    <!-- Theme toggle button -->
+    <button id="themeToggle">
+        <span id="themeIcon">🌞</span>
+    </button>
 
     <div class="container">
         <!-- Dropdown to select a video -->
@@ -146,109 +70,6 @@
 
     <!-- Load the IFrame Player API -->
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-        // Define the YouTube video IDs and descriptions
-        const videos = {
-            'NAmc74KK7JI': {
-                title: 'يسلم المرءَ أخوه',
-                description: 'قصيدة تتحدث عن الأخوة وقيمتها في العلاقات الإنسانية.'
-            },
-            'zuJxjPK2TgU': {
-                title: 'القصيـدة الرباعيـة في الوعـظ والسنـة',
-                description: 'قصيدة تتناول موضوعات الوعظ والتوجيه الديني وفق السنة النبوية.'
-            },
-            'oWzo-SsqOVY': {
-                title: 'لامية ابن الوردي',
-                description: 'قصيدة مشهورة لابن الوردي تتناول مواضيع الأخلاق والمواعظ.'
-            },
-            '_qXLo4wTk9E': {
-                title: 'نظم مثلث قطرب للبهنسي',
-                description: 'نظم شعري يتناول مثلثات قطرب، وهو نوع من الأشعار التعليمية.'
-            },
-            '9XscxBi-M40': {
-                title: 'ما للمنية أدعوها وتبتعد',
-                description: 'قصيدة تعبر عن التأمل في الموت والمنية وكيف تبتعد عن الإنسان.'
-            }
-        };
-
-        // Variables to track the current player and video
-        let player;
-        let currentVideoIndex = 0;
-        const videoIDs = Object.keys(videos);
-
-        // Load the YouTube IFrame API and create the player
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '315',
-                width: '560',
-                videoId: videoIDs[currentVideoIndex],
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        // Event handler when player is ready
-        function onPlayerReady(event) {
-            const videoSelect = document.getElementById('videos');
-            const poemDescription = document.getElementById('poemDescription');
-
-            // Populate dropdown with video titles
-            videoSelect.innerHTML = '<option value="">--Select a Video--</option>';
-            videoIDs.forEach(videoId => {
-                videoSelect.innerHTML += `<option value="${videoId}">${videos[videoId].title}</option>`;
-            });
-
-            // When a new video is selected
-            videoSelect.addEventListener('change', function () {
-                const selectedValue = videoSelect.value;
-                if (videos[selectedValue]) {
-                    player.loadVideoById(selectedValue);
-                    currentVideoIndex = videoIDs.indexOf(selectedValue);
-                    // Update poem description
-                    poemDescription.textContent = videos[selectedValue].description;
-                }
-            });
-
-            // Handle video list hover and click events
-            document.querySelectorAll('.video-item').forEach(item => {
-                item.addEventListener('mouseenter', function () {
-                    const thumbnailUrl = this.getAttribute('data-thumb');
-                    this.style.backgroundImage = `url(${thumbnailUrl})`;
-                });
-                item.addEventListener('mouseleave', function () {
-                    this.style.backgroundImage = 'none';
-                });
-                item.addEventListener('click', function () {
-                    const selectedVideoId = this.getAttribute('data-videoid');
-                    player.loadVideoById(selectedVideoId);
-                    currentVideoIndex = videoIDs.indexOf(selectedVideoId);
-                    poemDescription.textContent = videos[selectedVideoId].description;
-                    videoSelect.value = selectedVideoId;
-                });
-            });
-
-            // Previous and next video controls
-            document.getElementById('prevButton').addEventListener('click', function () {
-                if (currentVideoIndex > 0) {
-                    currentVideoIndex--;
-                    const previousVideoId = videoIDs[currentVideoIndex];
-                    player.loadVideoById(previousVideoId);
-                    videoSelect.value = previousVideoId;
-                    poemDescription.textContent = videos[previousVideoId].description;
-                }
-            });
-
-            document.getElementById('nextButton').addEventListener('click', function () {
-                if (currentVideoIndex < videoIDs.length - 1) {
-                    currentVideoIndex++;
-                    const nextVideoId = videoIDs[currentVideoIndex];
-                    player.loadVideoById(nextVideoId);
-                    videoSelect.value = nextVideoId;
-                    poemDescription.textContent = videos[nextVideoId].description;
-                }
-            });
-        }
-    </script>
+    <script src="videos.js"></script>
 </body>
 </html>

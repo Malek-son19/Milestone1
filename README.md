@@ -1,36 +1,40 @@
-<h1>YouTube Focus Enhancer with Arabic Poetry</h1>
-This project aims to create a distraction-free YouTube viewer by embedding videos directly into a webpage. The interface is designed to help users focus on watching content without the noise of YouTube’s recommendations or ads. As a demonstration, the project showcases various Arabic poems.
-<h1>Features</h1>
+# YouTube Focus Enhancer with Arabic Poetry
 
-- Poem Selection: A dropdown menu to choose from a collection of Arabic poems.
+This project provides a distraction-free YouTube viewing experience by embedding videos directly into a webpage. It helps users focus on content without the typical distractions of YouTube recommendations or ads. The project features a collection of Arabic poems as an example of how the platform can be used.
 
-- Video Navigation: Buttons for moving to the next and previous poems/videos.
+## Features
 
-- Poem Descriptions: Each poem is accompanied by a short, simple description.
+- **Poem Selection**: Choose from a collection of Arabic poems via a dropdown menu.
   
-- Clean UI: The page minimizes distractions by focusing only on the video and poem information, without linking to external sites like YouTube.
-<h1>Demo</h1>
-You can view the live version of the project [here](malek-son19.github.io/Milestone1/).
-<h1>Technologies Used</h1>
+- **Video Navigation**: Easily move between poems using "Next" and "Previous" buttons.
 
-- HTML5: For structuring the webpage and embedding the YouTube videos.
+- **Poem Descriptions**: Each poem is paired with a brief description to provide context.
 
-- CSS: To style the webpage for a distraction-free experience.
+- **Clean, Minimalist UI**: The interface eliminates distractions by focusing solely on the video and poem information, without redirecting to external sites like YouTube.
+
+- **Dark Mode**: Toggle between light and dark themes for a customized viewing experience.
+
+## Demo
+
+You can view a live version of the project [here](https://malek-son19.github.io/Milestone1/).
+
+## Technologies Used
+
+- **HTML5**: For structuring the webpage and embedding YouTube videos.
   
-- JavaScript: To handle poem selection and video navigation.
-<h1>How to Use</h1>
+- **CSS**: For styling the page and creating a user-friendly, distraction-free interface.
 
-1 Open the webpage.
+- **JavaScript**: To handle poem selection, video navigation, and theme switching (light/dark modes).
 
-2 Use the dropdown menu to select a poem.
+## How to Use
 
-3 Use the 'Next' and 'Previous' buttons to navigate through the poems.
+1. Open the webpage.
+2. Select a poem from the dropdown menu.
+3. Use the 'Next' and 'Previous' buttons to navigate between poems.
+4. Toggle the theme switch for a personalized experience (dark or light mode).
+5. Enjoy the distraction-free video and poem descriptions.
 
-4 Enjoy the distraction-free video and poem description.
 
-<h1>Future Enhancements</h1>
-Add more customization options for focus time (e.g., removing the YouTube controls or overlay).
-Include more advanced features like dark mode or video bookmarking.
-<h1>License</h1>
+## License
+
 This project is licensed under the MIT License.
-

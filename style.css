@@ -1,0 +1,121 @@
+ /* Add basic styles */
+ body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme (default) */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --container-bg: #f1f1f1;
+    --button-bg: #e0e0e0;
+    --video-item-bg: #f1f1f1;
+}
+body:not(.dark-theme) .video-item:hover {
+background-color: #ccc; /* Light theme hover color */
+}
+
+
+
+/* Dark theme */
+.dark-theme {
+    --background-color: #181818;
+    --text-color: #ffffff;
+    --container-bg: #333333;
+    --button-bg: #444444;
+    --video-item-bg: #555555;
+}
+body.dark-theme .video-item:hover {
+background-color: #666; /* Dark theme hover color */
+}
+
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+    background-color: var(--container-bg);
+    border-radius: 8px;
+}
+
+iframe {
+    width: 560px;
+    height: 315px;
+    border: none;
+    margin-top: 20px;
+}
+
+select, button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+}
+
+.main-video {
+    grid-column: 1 / -1;
+}
+
+.video-selection {
+    grid-column: 1 / -1;
+    text-align: left;
+}
+
+.video-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.video-item {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    background-color: var(--video-item-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+
+.video-item:hover {
+background-color: #ccc; /* Or any color you want for hover */
+transition: background-color 0.3s ease;
+}
+
+}
+
+.video-item-title {
+    font-size: 12px;
+    color: var(--text-color);
+    text-align: center;
+    width: 100%;
+}
+
+/* Theme toggle button */
+#themeToggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: var(--button-bg);
+    border-radius: 50%;
+    cursor: pointer;
+}
