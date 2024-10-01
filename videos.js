@@ -1,5 +1,5 @@
- // Define the YouTube video IDs and descriptions
- const videos = {
+// Define the YouTube video IDs and descriptions
+const videos = {
     'NAmc74KK7JI': {
         title: 'يسلم المرءَ أخوه',
         description: 'قصيدة تتحدث عن الأخوة وقيمتها في العلاقات الإنسانية.'
@@ -27,19 +27,40 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 
 // Check localStorage for theme preference
-if (localStorage.getItem('theme') === 'dark') {
+let currentTheme = localStorage.getItem('theme') || 'light'; // Default to light theme
+
+// Apply stored theme
+if (currentTheme === 'dark') {
     document.body.classList.add('dark-theme');
     themeIcon.textContent = '🌜'; // Moon icon for dark mode
+} else if (currentTheme === 'theme-1') {
+    document.body.classList.add('theme-1');
+} else if (currentTheme === 'theme-2') {
+    document.body.classList.add('theme-2');
 }
 
+// Event listener for theme toggle button
 themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeIcon.textContent = isDark ? '🌜' : '🌞';
+    if (document.body.classList.contains('dark-theme')) {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('theme-1'); // Switch to theme-1 on click
+        currentTheme = 'theme-1';
+    } else if (document.body.classList.contains('theme-1')) {
+        document.body.classList.remove('theme-1');
+        document.body.classList.add('theme-2'); // Switch to theme-2 on click
+        currentTheme = 'theme-2';
+    } else {
+        document.body.classList.remove('theme-2');
+        document.body.classList.add('dark-theme'); // Switch to dark mode on click
+        currentTheme = 'dark';
+    }
+
+    localStorage.setItem('theme', currentTheme); // Save theme preference
+    themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞'; // Change icon based on theme
 });
 
-// YouTube video functionality (same as your original code)
+
+// YouTube video functionality
 let player;
 let currentVideoIndex = 0;
 const videoIDs = Object.keys(videos);
@@ -87,4 +108,4 @@ document.querySelectorAll('.video-item').forEach(item => {
         const videoId = this.getAttribute('data-videoid');
         playVideo(videoId);
     });
-});
+}); 

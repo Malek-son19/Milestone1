@@ -1,5 +1,5 @@
- /* Add basic styles */
- body {
+/* Add basic styles */
+body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 20px;
@@ -14,11 +14,6 @@
     --button-bg: #e0e0e0;
     --video-item-bg: #f1f1f1;
 }
-body:not(.dark-theme) .video-item:hover {
-background-color: #ccc; /* Light theme hover color */
-}
-
-
 
 /* Dark theme */
 .dark-theme {
@@ -28,9 +23,24 @@ background-color: #ccc; /* Light theme hover color */
     --button-bg: #444444;
     --video-item-bg: #555555;
 }
-body.dark-theme .video-item:hover {
-background-color: #666; /* Dark theme hover color */
+
+/* Blueberry Theme */
+.blueberry {
+    background-color: #3066BE; /* Blue background */
+    color: #B4C5E4; /* Light text color */
 }
+
+/* Earth Theme */
+.earth {
+    background-color: #CFF27E; /* Light green background */
+    color: #523A34; /* Dark brown text color */
+}
+
+.earth h1, .earth h2, .earth h3, .earth p {
+    color: #523A34; /* Ensure headings and text are visible */
+}
+
+/* Additional customization can be added here */
 
 
 body {
@@ -38,6 +48,7 @@ body {
     color: var(--text-color);
 }
 
+/* Container styles */
 .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -91,15 +102,12 @@ select, button {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s;
-    position: relative;
 }
 
-
+/* Hover effect for video items */
 .video-item:hover {
-background-color: #ccc; /* Or any color you want for hover */
-transition: background-color 0.3s ease;
-}
-
+    background-color: #ccc; /* Or any color you want for hover */
+    transition: background-color 0.3s ease;
 }
 
 .video-item-title {
