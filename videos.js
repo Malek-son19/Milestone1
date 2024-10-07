@@ -27,40 +27,18 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 
 // Check localStorage for theme preference
-let currentTheme = localStorage.getItem('theme') || 'light'; // Default to light theme
+let currentTheme = localStorage.getItem('theme') || 'light';
 
 // Apply stored theme
-if (currentTheme === 'dark') {
-    document.body.classList.add('dark-theme');
-    themeIcon.textContent = '🌜'; // Moon icon for dark mode
-} else if (currentTheme === 'theme-1') {
-    document.body.classList.add('theme-1');
-} else if (currentTheme === 'theme-2') {
-    document.body.classList.add('theme-2');
-}
+applyTheme(currentTheme);
 
 // Event listener for theme toggle button
 themeToggle.addEventListener('click', () => {
-    if (document.body.classList.contains('dark-theme')) {
-        document.body.classList.remove('dark-theme');
-        document.body.classList.add('theme-1'); // Switch to theme-1 on click
-        currentTheme = 'theme-1';
-    } else if (document.body.classList.contains('theme-1')) {
-        document.body.classList.remove('theme-1');
-        document.body.classList.add('theme-2'); // Switch to theme-2 on click
-        currentTheme = 'theme-2';
-    } else {
-        document.body.classList.remove('theme-2');
-        document.body.classList.add('dark-theme'); // Switch to dark mode on click
-        currentTheme = 'dark';
-    }
-
+    currentTheme = toggleTheme(currentTheme);
     localStorage.setItem('theme', currentTheme); // Save theme preference
-    themeIcon.textContent = currentTheme === 'dark' ? '🌜' : '🌞'; // Change icon based on theme
 });
 
-
-// YouTube video functionality
+// YouTube player setup
 let player;
 let currentVideoIndex = 0;
 const videoIDs = Object.keys(videos);
@@ -70,18 +48,45 @@ function onYouTubeIframeAPIReady() {
         height: '315',
         width: '560',
         videoId: videoIDs[currentVideoIndex],
+        events: {
+            'onReady': onPlayerReady,
+            'onError': onPlayerError
+        }
     });
 }
 
-function playVideo(videoId) {
-    player.loadVideoById(videoId);
-    updateDescription(videoId);
+function onPlayerReady(event) {
+    console.log("Player is ready.");
 }
 
-function updateDescription(videoId) {
-    document.getElementById('poemDescription').textContent = videos[videoId].description;
+function onPlayerError(event) {
+    console.error("Error occurred while loading the video:", event);
 }
 
+function toggleTheme(currentTheme) {
+    const body = document.body;
+    const themes = ['light', 'dark', 'blueberry', 'earth'];
+    const icons = ['🌞', '🌜', '🫐', '🍃'];
+    let index = themes.indexOf(currentTheme);
+    index = (index + 1) % themes.length;
+    
+    themes.forEach(theme => body.classList.remove(theme + '-theme'));
+    body.classList.add(themes[index] + '-theme');
+    themeIcon.textContent = icons[index];
+    return themes[index];
+}
+
+function applyTheme(theme) {
+    const body = document.body;
+    const themes = ['light', 'dark', 'blueberry', 'earth'];
+    const icons = ['🌞', '🌜', '🫐', '🍃'];
+    
+    themes.forEach(t => body.classList.remove(t + '-theme'));
+    body.classList.add(theme + '-theme');
+    themeIcon.textContent = icons[themes.indexOf(theme)];
+}
+
+// Video control functionality
 document.getElementById('videos').addEventListener('change', (event) => {
     const selectedVideoId = event.target.value;
     if (selectedVideoId) {
@@ -104,8 +109,27 @@ document.getElementById('nextButton').addEventListener('click', () => {
 });
 
 document.querySelectorAll('.video-item').forEach(item => {
-    item.addEventListener('click', function () {
+    item.addEventListener('click', function() {
         const videoId = this.getAttribute('data-videoid');
         playVideo(videoId);
     });
-}); 
+});
+
+function playVideo(videoId) {
+    player.loadVideoById(videoId);
+    updateDescription(videoId);
+    currentVideoIndex = videoIDs.indexOf(videoId);
+    updateButtonStates();
+}
+
+function updateDescription(videoId) {
+    document.getElementById('poemDescription').textContent = videos[videoId].description;
+}
+
+function updateButtonStates() {
+    document.getElementById('prevButton').disabled = currentVideoIndex === 0;
+    document.getElementById('nextButton').disabled = currentVideoIndex === videoIDs.length - 1;
+}
+
+// Initial button state update
+updateButtonStates(); 

@@ -7,7 +7,7 @@ body {
 }
 
 /* Light theme (default) */
-:root {
+body.light-theme {
     --background-color: #ffffff;
     --text-color: #000000;
     --container-bg: #f1f1f1;
@@ -16,7 +16,7 @@ body {
 }
 
 /* Dark theme */
-.dark-theme {
+body.dark-theme {
     --background-color: #181818;
     --text-color: #ffffff;
     --container-bg: #333333;
@@ -25,23 +25,22 @@ body {
 }
 
 /* Blueberry Theme */
-.blueberry {
-    background-color: #3066BE; /* Blue background */
-    color: #B4C5E4; /* Light text color */
+body.blueberry-theme {
+    --background-color: #3066BE;
+    --text-color: #B4C5E4;
+    --container-bg: #5B85AA;
+    --button-bg: #8FC1E3;
+    --video-item-bg: #7395AE;
 }
 
 /* Earth Theme */
-.earth {
-    background-color: #CFF27E; /* Light green background */
-    color: #523A34; /* Dark brown text color */
+body.earth-theme {
+    --background-color: #CFF27E;
+    --text-color: #523A34;
+    --container-bg: #A3C9A8;
+    --button-bg: #84A98C;
+    --video-item-bg: #69A297;
 }
-
-.earth h1, .earth h2, .earth h3, .earth p {
-    color: #523A34; /* Ensure headings and text are visible */
-}
-
-/* Additional customization can be added here */
-
 
 body {
     background-color: var(--background-color);
@@ -58,11 +57,11 @@ body {
     border-radius: 8px;
 }
 
-iframe {
-    width: 560px;
+#player {
+    width: 100%;
+    max-width: 560px;
     height: 315px;
-    border: none;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 select, button {
@@ -106,7 +105,7 @@ select, button {
 
 /* Hover effect for video items */
 .video-item:hover {
-    background-color: #ccc; /* Or any color you want for hover */
+    background-color: var(--button-bg);
     transition: background-color 0.3s ease;
 }
 
