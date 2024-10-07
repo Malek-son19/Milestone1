@@ -23,7 +23,7 @@ body.dark-theme {
     --button-bg: #444444;
     --video-item-bg: #555555;
 }
-
+/* The two new themes do not look great mostly the blue one im having them ready for milestone 5/*
 /* Blueberry Theme */
 body.blueberry-theme {
     --background-color: #3066BE;
