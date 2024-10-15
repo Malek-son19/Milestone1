@@ -26,11 +26,11 @@ body.dark-theme {
 /* The two new themes do not look great mostly the blue one im having them ready for milestone 5/*
 /* Blueberry Theme */
 body.blueberry-theme {
-    --background-color: #3066BE;
-    --text-color: #B4C5E4;
-    --container-bg: #5B85AA;
-    --button-bg: #8FC1E3;
-    --video-item-bg: #7395AE;
+    --background-color: #87CEEB;
+    --text-color: #003366; 
+    --container-bg: #B0E2FF; 
+    --button-bg: #66CDAA; 
+    --video-item-bg: #E0FFFF;
 }
 
 /* Earth Theme */
@@ -41,7 +41,14 @@ body.earth-theme {
     --button-bg: #84A98C;
     --video-item-bg: #69A297;
 }
-
+/*warm theme*/
+body.warm-theme {
+    --background-color: #FF4500;
+    --text-color: #2F1B0C;
+    --container-bg: #FF7F50; 
+    --button-bg: #FFD700;
+    --video-item-bg: #FA8072; 
+}
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -125,4 +132,71 @@ select, button {
     background-color: var(--button-bg);
     border-radius: 50%;
     cursor: pointer;
+}
+nav {
+    text-align: center;
+    background-color: #3C3744; /* Adjust to match your theme */
+    padding: 15px;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: white; /* Adjust based on your design */
+    font-size: 1.2em;
+}
+
+.nav-menu li a:hover {
+    color: #B4C5E4; /* Adjust for hover effect */
+}
+/* Profile Form Styling */
+.profile-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="email"],
+.profile-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.profile-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.profile-container button {
+    background-color: #3C3744;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-container button:hover {
+    background-color: #3066BE;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
 }

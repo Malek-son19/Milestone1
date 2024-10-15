@@ -65,8 +65,8 @@ function onPlayerError(event) {
 
 function toggleTheme(currentTheme) {
     const body = document.body;
-    const themes = ['light', 'dark', 'blueberry', 'earth'];
-    const icons = ['🌞', '🌜', '🫐', '🍃'];
+    const themes = ['light', 'dark', 'blueberry', 'earth', 'warm'];
+    const icons = ['🌞', '🌜', '🫐', '🍃', '🔥']; // Added '🔥' icon for warm theme
     let index = themes.indexOf(currentTheme);
     index = (index + 1) % themes.length;
     
@@ -78,13 +78,14 @@ function toggleTheme(currentTheme) {
 
 function applyTheme(theme) {
     const body = document.body;
-    const themes = ['light', 'dark', 'blueberry', 'earth'];
-    const icons = ['🌞', '🌜', '🫐', '🍃'];
+    const themes = ['light', 'dark', 'blueberry', 'earth', 'warm']; // Added 'warm'
+    const icons = ['🌞', '🌜', '🫐', '🍃', '🔥']; // Added '🔥' icon
     
     themes.forEach(t => body.classList.remove(t + '-theme'));
     body.classList.add(theme + '-theme');
     themeIcon.textContent = icons[themes.indexOf(theme)];
 }
+
 
 // Video control functionality
 document.getElementById('videos').addEventListener('change', (event) => {

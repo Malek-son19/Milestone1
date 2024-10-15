@@ -1,35 +1,42 @@
-# YouTube Focus Enhancer with Arabic Poetry
+# **YouTube Focus Enhancer with Arabic Poetry**
 
-This project provides a distraction-free YouTube viewing experience by embedding videos directly into a webpage. It helps users focus on content without the typical distractions of YouTube recommendations or ads. The project features a collection of Arabic poems as an example of how the platform can be used.
+This project offers a **distraction-free YouTube viewing experience** by embedding videos directly into a webpage, helping users focus on content without typical YouTube distractions like recommendations or ads. As a demonstration, it features a **collection of Arabic poems**, making it a unique way to engage with literary content.
 
-## Features
+## **Features**
 
-- **Poem Selection**: Choose from a collection of Arabic poems via a dropdown menu.
-- **Video Navigation**: Easily move between poems using "Next" and "Previous" buttons.
-- **Poem Descriptions**: Each poem is paired with a brief description to provide context.
-- **User Personalization**: Users can enter their name and email, which are saved for later use.
-- **Multiple Themes**: Select from four different themes for a customized viewing experience.
-- **Clean, Minimalist UI**: The interface eliminates distractions by focusing solely on the video and poem information, without redirecting to external sites like YouTube.
+- **Poem Selection**: Choose from a diverse collection of Arabic poems via a dropdown menu.  
+- **Video Navigation**: Use "Next" and "Previous" buttons to seamlessly move between poems.  
+- **Poem Descriptions**: Each poem includes a brief description, giving users more context and insight.  
+- **User Personalization**: Users can input their **name and email**, which are saved for later use, enhancing personalization.  
+- **Multiple Themes**: Choose from **five different themes** for a tailored viewing experience:  
+  - Light 🌞  
+  - Dark 🌜  
+  - Blueberry 🫐  
+  - Earth 🍃  
+  - Warm 🔥  
+- **Page Synchronization**: The chosen theme is **saved across pages**, ensuring consistency on the **profile page** and homepage.  
+- **Clean, Minimalist UI**: Focus solely on the video and poem information without the clutter of external links or ads.
 
-## Demo
+## **Demo**
 
 You can view a live version of the project [here](https://malek-son19.github.io/Milestone1/).
 
-## Technologies Used
+## **Technologies Used**
 
-- **HTML5**: For structuring the webpage and embedding YouTube videos.
-- **CSS**: For styling the page and creating a user-friendly, distraction-free interface.
-- **JavaScript**: To handle poem selection, video navigation, user personalization, and theme switching.
+- **HTML5**: Structures the webpage and embeds YouTube videos.  
+- **CSS**: Styles the page and provides multiple themes for a distraction-free interface.  
+- **JavaScript**: Handles user interactions, including poem selection, video navigation, theme switching, and profile synchronization.
 
-## How to Use
+## **How to Use**
 
-1. Open the webpage.
-2. Select a poem from the dropdown menu.
-3. Use the 'Next' and 'Previous' buttons to navigate between poems.
-4. Enter your name and email to save your preferences.
-5. Select a theme for a personalized experience.
-6. Enjoy the distraction-free video and poem descriptions.
+1. Open the webpage.  
+2. Select a poem from the dropdown menu.  
+3. Use the **'Next' and 'Previous' buttons** to navigate between poems.  
+4. Enter your **name and email** to personalize the experience.  
+5. Choose one of the **five themes** for a customized interface.  
+6. Navigate to the **profile page**, where your selected theme will remain active.  
+7. Enjoy a clean, ad-free video experience with descriptions of each poem.
 
-## License
+## **License**
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
